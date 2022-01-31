@@ -19,6 +19,7 @@ class SecondViewController: UIViewController {
     
     var cardHeight: CGFloat = 300
     let cardHandlerAreaHeight: CGFloat = 30
+    let defaultOriginY: CGFloat = 300
     var isCardVisible: Bool = false
     
     var nextState: CardState {
@@ -40,7 +41,6 @@ class SecondViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         cardHeight = self.view.frame.height
-        self.setupCardView()
     }
     
     
@@ -54,7 +54,7 @@ class SecondViewController: UIViewController {
         
         //Create card
         cardViewController = FloatingCardViewController(nibName: "FloatingCardViewController", bundle: nil)
-        cardViewController.view.frame = CGRect(x: 0, y: self.view.bounds.height - (view.safeAreaInsets.bottom + self.cardHandlerAreaHeight), width: self.view.bounds.width, height: self.view.bounds.height)
+        cardViewController.view.frame = CGRect(x: 0, y: self.view.bounds.height - (view.safeAreaInsets.bottom + self.cardHandlerAreaHeight + defaultOriginY), width: self.view.bounds.width, height: self.view.bounds.height)
         self.addChild(cardViewController)
         self.view.addSubview(cardViewController.view)
         cardViewController.view.clipsToBounds = true
@@ -83,6 +83,7 @@ class SecondViewController: UIViewController {
                 viewToDrag.frame.origin = .init(x: viewToDrag.frame.origin.x, y: lowerBound)
                 self?.visualEffectView.alpha = 0
                 self?.cardViewController.configureView(to: .moving)
+                self?.cardViewController.remove()
             }
         }
     }
@@ -121,6 +122,7 @@ class SecondViewController: UIViewController {
                     viewToDrag.frame.origin = .init(x: viewToDrag.frame.origin.x, y: newOriginY)
                 } completion: { [weak self] _ in
                     if percentage > 0.6 {
+                        self?.visualEffectView.isHidden = true
                         self?.cardViewController.configureView(to: .fullScreen)
                     }
                 }
@@ -156,5 +158,33 @@ class SecondViewController: UIViewController {
 //            // blur background
 //            visualEffectView.alpha = percentage
 //        }
+    }
+    
+    @IBAction func addFloatingPanelTapped(_ sender: UIButton) {
+        if cardViewController != nil {
+            cardViewController.remove()
+            cardViewController = nil
+        }
+        self.setupCardView()
+    }
+    
+}
+
+@nonobjc extension UIViewController {
+    func add(_ child: UIViewController, frame: CGRect? = nil) {
+        addChild(child)
+
+        if let frame = frame {
+            child.view.frame = frame
+        }
+
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+
+    func remove() {
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
     }
 }
