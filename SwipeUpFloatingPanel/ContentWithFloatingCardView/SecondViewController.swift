@@ -16,12 +16,19 @@ class SecondViewController: UIViewController {
         let contentView = ContentViewController()
         
         //Create card
+        let handleHeight: CGFloat = 30
         cardViewController = FloatingCardViewController(containedController: contentView, cardHeight: self.view.frame.height)
-        cardViewController.view.frame = CGRect(x: 0, y: self.view.bounds.height - (view.safeAreaInsets.bottom + 30 + 300), width: self.view.bounds.width, height: self.view.bounds.height)
-        self.addChild(cardViewController)
-        self.view.addSubview(cardViewController.view)
-        cardViewController.didMove(toParent: self)
-        cardViewController.view.clipsToBounds = true
+        
+        // add to current view
+        let cardDefaultY: CGFloat = 300
+        let cardY: CGFloat = self.view.bounds.height - (view.safeAreaInsets.bottom + handleHeight + cardDefaultY)
+        let cardDefaultRect: CGRect = .init(x: 0,
+                                                y: cardY,
+                                                width: self.view.bounds.width,
+                                                height: self.view.bounds.height)
+        add(cardViewController, frame:  cardDefaultRect)
+        
+        // configure it to moving state
         cardViewController.configureView(to: .moving)
     }
     
