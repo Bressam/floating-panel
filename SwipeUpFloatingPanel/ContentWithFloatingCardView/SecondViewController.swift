@@ -58,12 +58,14 @@ class SecondViewController: UIViewController {
         self.addChild(cardViewController)
         self.view.addSubview(cardViewController.view)
         cardViewController.view.clipsToBounds = true
+        cardViewController.configureView(to: .moving)
         
         //Create gestures
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapCard(recognizer:)))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanCard(recognizer:)))
         self.cardViewController.cardHandleArea.addGestureRecognizer(tapGesture)
         self.cardViewController.cardHandleArea.addGestureRecognizer(panGesture)
+        cardViewController.dismissButton.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
         
         
         let mainVC = ContentViewController(nibName: "ContentViewController", bundle: nil)
@@ -74,6 +76,17 @@ class SecondViewController: UIViewController {
     }
     
     //MARK: Card gesture handlers
+    @objc func dismissTapped() {
+        let lowerBound = view.frame.height - (view.safeAreaInsets.bottom + cardHandlerAreaHeight)
+        if let viewToDrag = cardViewController.view {
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 2, options: .curveEaseOut) { [weak self] in
+                viewToDrag.frame.origin = .init(x: viewToDrag.frame.origin.x, y: lowerBound)
+                self?.visualEffectView.alpha = 0
+                self?.cardViewController.configureView(to: .moving)
+            }
+        }
+    }
+    
     @objc func handleTapCard(recognizer: UITapGestureRecognizer) {
         print("Tap")
 //        self.animateTransitionIfNeeded(nextState: self.nextState, duration: 0.9)
@@ -106,7 +119,12 @@ class SecondViewController: UIViewController {
                 newOriginY = percentage > 0.6 ? higherBound : newOriginY
                 UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseIn) {
                     viewToDrag.frame.origin = .init(x: viewToDrag.frame.origin.x, y: newOriginY)
+                } completion: { [weak self] _ in
+                    if percentage > 0.6 {
+                        self?.cardViewController.configureView(to: .fullScreen)
+                    }
                 }
+
             case .cancelled:
                 fallthrough
             default:

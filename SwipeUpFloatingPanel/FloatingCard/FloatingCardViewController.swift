@@ -7,13 +7,31 @@
 
 import UIKit
 
+enum FloatingCardState {
+    case moving, fullScreen
+}
+
 class FloatingCardViewController: UIViewController {
     @IBOutlet var cardHandleArea: UIView!
+    @IBOutlet var horizontalLine: HorizontalLineRoundedCorners!
+    @IBOutlet var dismissButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func configureView(to state: FloatingCardState) {
+        switch state {
+        case .moving:
+            horizontalLine.isHidden = false
+            dismissButton.isHidden = true
+        case .fullScreen:
+            horizontalLine.isHidden = true
+            dismissButton.isHidden = false
+        }
     }
 
 
