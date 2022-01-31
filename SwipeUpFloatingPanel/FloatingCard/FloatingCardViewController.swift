@@ -135,13 +135,13 @@ class FloatingCardViewController: UIViewController {
     //MARK: Card gesture handlers
     @objc func dismissTapped() {
         if let superView = parent?.view {
-            let lowerBound = superView.frame.height - (superView.safeAreaInsets.bottom + cardHandlerAreaHeight)
-            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 2, options: .curveEaseOut) { [weak self] in
+            UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 2, options: .curveEaseOut) { [weak self] in
                 guard let self = self  else { return }
-                self.view.frame.origin = .init(x: self.view.frame.origin.x, y: lowerBound)
+                self.view.frame.origin = .init(x: self.view.frame.origin.x, y: superView.frame.maxY - self.cardHandlerAreaHeight/3)
                 self.visualEffectView.alpha = 0
                 self.configureView(to: .moving)
-                self.remove()
+            } completion: { [weak self] _ in
+                self?.remove()
             }
         }
     }
