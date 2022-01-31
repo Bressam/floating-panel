@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FloatingCardViewController" customModule="SwipeUpFloatingPanel" customModuleProvider="target">
             <connections>
                 <outlet property="cardHandleArea" destination="Gg5-np-WmF" id="Bab-JP-66u"/>
+                <outlet property="dismissButton" destination="QHO-89-fwp" id="6eP-jS-hUi"/>
+                <outlet property="horizontalLine" destination="UO4-Vy-Y4S" id="PaH-IV-VL9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,12 +43,26 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHO-89-fwp">
+                            <rect key="frame" x="8" y="2.5" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="eB2-uK-wbe"/>
+                                <constraint firstAttribute="width" secondItem="QHO-89-fwp" secondAttribute="height" multiplier="1:1" id="zui-lf-NB8"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain">
+                                <imageReference key="image" image="clear.fill" catalog="system" symbolScale="large"/>
+                                <color key="baseForegroundColor" red="1" green="0.75758970859999997" blue="0.75950292610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </buttonConfiguration>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="A14-Xx-WuO"/>
+                        <constraint firstItem="QHO-89-fwp" firstAttribute="centerY" secondItem="Gg5-np-WmF" secondAttribute="centerY" id="AYu-lw-DLg"/>
                         <constraint firstItem="UO4-Vy-Y4S" firstAttribute="centerX" secondItem="Gg5-np-WmF" secondAttribute="centerX" id="cQi-8R-bQX"/>
                         <constraint firstItem="UO4-Vy-Y4S" firstAttribute="centerY" secondItem="Gg5-np-WmF" secondAttribute="centerY" id="hX5-M1-tVI"/>
+                        <constraint firstItem="QHO-89-fwp" firstAttribute="leading" secondItem="Gg5-np-WmF" secondAttribute="leading" constant="8" id="uDh-EQ-FL5"/>
                     </constraints>
                 </view>
             </subviews>
@@ -61,6 +78,7 @@
         </view>
     </objects>
     <resources>
+        <image name="clear.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
