@@ -7,20 +7,24 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-    
+class SecondViewController: UIViewController, CardContaibable {
+    // CardContainable
+    typealias viewController = ContentViewController
+    var handleHeight: CGFloat = 30
+    var cardDefaultY: CGFloat = 300
+    var contentViewController: ContentViewController!
     var cardViewController: FloatingCardViewController!
     
+
+    // MARK: Functions
     func setupCardView() {
         // content view
-        let contentView = ContentViewController()
+        contentViewController = ContentViewController()
         
         //Create card
-        let handleHeight: CGFloat = 30
-        cardViewController = FloatingCardViewController(containedController: contentView, cardHeight: self.view.frame.height)
+        cardViewController = FloatingCardViewController(containedController: contentViewController, cardHeight: self.view.frame.height)
         
         // add to current view
-        let cardDefaultY: CGFloat = 300
         let cardY: CGFloat = self.view.bounds.height - (view.safeAreaInsets.bottom + handleHeight + cardDefaultY)
         let cardDefaultRect: CGRect = .init(x: 0,
                                                 y: cardY,

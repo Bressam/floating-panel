@@ -20,6 +20,7 @@
 		18BD33E827A762540035DDCA /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD33E627A762540035DDCA /* SecondViewController.xib */; };
 		18BD33EB27A76CA80035DDCA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD33E927A76CA70035DDCA /* ContentViewController.swift */; };
 		18BD33EC27A76CA80035DDCA /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD33EA27A76CA70035DDCA /* ContentViewController.xib */; };
+		18BD33EE27A791630035DDCA /* CardContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD33ED27A791630035DDCA /* CardContainable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		18BD33E627A762540035DDCA /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		18BD33E927A76CA70035DDCA /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		18BD33EA27A76CA70035DDCA /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
+		18BD33ED27A791630035DDCA /* CardContainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				1854377C276F91A6004DAA1F /* CustomItens */,
 				18983CE1276EA2FF008AB30D /* FloatingCardViewController.swift */,
 				18983CE2276EA2FF008AB30D /* FloatingCardViewController.xib */,
+				18BD33ED27A791630035DDCA /* CardContainable.swift */,
 			);
 			path = FloatingCard;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			files = (
 				18BD33E727A762540035DDCA /* SecondViewController.swift in Sources */,
 				18983CE3276EA2FF008AB30D /* FloatingCardViewController.swift in Sources */,
+				18BD33EE27A791630035DDCA /* CardContainable.swift in Sources */,
 				18983CE6276EA49F008AB30D /* HorizontalLineRoundedCorners.swift in Sources */,
 				18983CDF276E194A008AB30D /* MainViewController.swift in Sources */,
 				18983CC8276E17BC008AB30D /* AppDelegate.swift in Sources */,
