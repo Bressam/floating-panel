@@ -16,6 +16,10 @@
 		18983CE3276EA2FF008AB30D /* FloatingCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18983CE1276EA2FF008AB30D /* FloatingCardViewController.swift */; };
 		18983CE4276EA2FF008AB30D /* FloatingCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18983CE2276EA2FF008AB30D /* FloatingCardViewController.xib */; };
 		18983CE6276EA49F008AB30D /* HorizontalLineRoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18983CE5276EA49F008AB30D /* HorizontalLineRoundedCorners.swift */; };
+		18BD33E727A762540035DDCA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD33E527A762530035DDCA /* SecondViewController.swift */; };
+		18BD33E827A762540035DDCA /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD33E627A762540035DDCA /* SecondViewController.xib */; };
+		18BD33EB27A76CA80035DDCA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD33E927A76CA70035DDCA /* ContentViewController.swift */; };
+		18BD33EC27A76CA80035DDCA /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD33EA27A76CA70035DDCA /* ContentViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		18983CE1276EA2FF008AB30D /* FloatingCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCardViewController.swift; sourceTree = "<group>"; };
 		18983CE2276EA2FF008AB30D /* FloatingCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingCardViewController.xib; sourceTree = "<group>"; };
 		18983CE5276EA49F008AB30D /* HorizontalLineRoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineRoundedCorners.swift; sourceTree = "<group>"; };
+		18BD33E527A762530035DDCA /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		18BD33E627A762540035DDCA /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
+		18BD33E927A76CA70035DDCA /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		18BD33EA27A76CA70035DDCA /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,8 @@
 				18983CC7276E17BC008AB30D /* AppDelegate.swift */,
 				18983CC9276E17BC008AB30D /* SceneDelegate.swift */,
 				18983CD0276E17C5008AB30D /* Assets.xcassets */,
+				18BD33E927A76CA70035DDCA /* ContentViewController.swift */,
+				18BD33EA27A76CA70035DDCA /* ContentViewController.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -77,6 +87,8 @@
 			children = (
 				18983CDD276E194A008AB30D /* MainViewController.swift */,
 				18983CDE276E194A008AB30D /* MainViewController.xib */,
+				18BD33E527A762530035DDCA /* SecondViewController.swift */,
+				18BD33E627A762540035DDCA /* SecondViewController.xib */,
 			);
 			path = ContentWithFloatingCardView;
 			sourceTree = "<group>";
@@ -168,8 +180,10 @@
 			files = (
 				18983CE4276EA2FF008AB30D /* FloatingCardViewController.xib in Resources */,
 				18983CDC276E18F4008AB30D /* LaunchScreen.xib in Resources */,
+				18BD33EC27A76CA80035DDCA /* ContentViewController.xib in Resources */,
 				18983CE0276E194A008AB30D /* MainViewController.xib in Resources */,
 				18983CD1276E17C5008AB30D /* Assets.xcassets in Resources */,
+				18BD33E827A762540035DDCA /* SecondViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,11 +194,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BD33E727A762540035DDCA /* SecondViewController.swift in Sources */,
 				18983CE3276EA2FF008AB30D /* FloatingCardViewController.swift in Sources */,
 				18983CE6276EA49F008AB30D /* HorizontalLineRoundedCorners.swift in Sources */,
 				18983CDF276E194A008AB30D /* MainViewController.swift in Sources */,
 				18983CC8276E17BC008AB30D /* AppDelegate.swift in Sources */,
 				18983CCA276E17BC008AB30D /* SceneDelegate.swift in Sources */,
+				18BD33EB27A76CA80035DDCA /* ContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
