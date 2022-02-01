@@ -44,9 +44,8 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHO-89-fwp">
-                            <rect key="frame" x="8" y="2.5" width="25" height="25"/>
+                            <rect key="frame" x="8" y="0.0" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="25" id="eB2-uK-wbe"/>
                                 <constraint firstAttribute="width" secondItem="QHO-89-fwp" secondAttribute="height" multiplier="1:1" id="zui-lf-NB8"/>
                             </constraints>
                             <state key="normal" title="Button"/>
@@ -60,7 +59,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="A14-Xx-WuO"/>
                         <constraint firstItem="QHO-89-fwp" firstAttribute="centerY" secondItem="Gg5-np-WmF" secondAttribute="centerY" id="AYu-lw-DLg"/>
+                        <constraint firstItem="QHO-89-fwp" firstAttribute="top" secondItem="Gg5-np-WmF" secondAttribute="top" id="Dej-L6-f2W"/>
                         <constraint firstItem="UO4-Vy-Y4S" firstAttribute="centerX" secondItem="Gg5-np-WmF" secondAttribute="centerX" id="cQi-8R-bQX"/>
+                        <constraint firstAttribute="bottom" secondItem="QHO-89-fwp" secondAttribute="bottom" id="dom-kb-2Tg"/>
                         <constraint firstItem="UO4-Vy-Y4S" firstAttribute="centerY" secondItem="Gg5-np-WmF" secondAttribute="centerY" id="hX5-M1-tVI"/>
                         <constraint firstItem="QHO-89-fwp" firstAttribute="leading" secondItem="Gg5-np-WmF" secondAttribute="leading" constant="8" id="uDh-EQ-FL5"/>
                     </constraints>

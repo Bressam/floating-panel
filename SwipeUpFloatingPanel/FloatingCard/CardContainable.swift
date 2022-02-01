@@ -8,10 +8,10 @@
 import UIKit
 
 // Views that want to show a card must implement this protocol
-protocol CardContaibable {
+protocol CardContainable {
     associatedtype viewController: UIViewController
-    var handleHeight: CGFloat { get set }
-    var contentViewController: viewController! { get set }
-    var cardDefaultY: CGFloat { get set }
-    var cardViewController: FloatingCardViewController! { get set }
+    var handleHeight: CGFloat { get }
+    var cardDefaultY: CGFloat { get }    
+    func contentViewController(for panel: FloatingCardViewController) -> viewController
+    func addFloatingPanel()
 }

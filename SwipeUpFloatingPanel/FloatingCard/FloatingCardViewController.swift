@@ -46,13 +46,13 @@ class FloatingCardViewController: UIViewController {
     @IBOutlet var dismissButton: UIButton!
     
     // MARK: Properties
-    private var containedController: UIViewController
+    private var containedController: UIViewController!
     private var visualEffectView: UIVisualEffectView = .init(effect: UIBlurEffect(style: .dark))
 
     // layout configuration
     private var cardHeight: CGFloat = 300
-    private let cardHandlerAreaHeight: CGFloat = 30
-    private let defaultOriginY: CGFloat = 300
+    private var cardHandlerAreaHeight: CGFloat = 30
+    private var defaultOriginY: CGFloat = 300
     private var isCardVisible: Bool = false
     private var topAnchorPercentage: CGFloat = 0.6
     private var lowerAnchorPercentage: CGFloat = 0.2
@@ -62,14 +62,28 @@ class FloatingCardViewController: UIViewController {
     private var previousState: FloatingCardState = .moving
     private var currentState: FloatingCardState = .moving
     
-    init(containedController: UIViewController, cardHeight: CGFloat) {
-        self.containedController = containedController
-        self.cardHeight = cardHeight
-        super.init(nibName: nil, bundle: nil)
+//    init<T: CardContainable>(_ cardContainableView: T) {
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
+    func configureTo<T: CardContainable>(_ cardContainableView: T) {
+        // content view
+        containedController = cardContainableView.contentViewController(for: self)
+        defaultOriginY = cardContainableView.cardDefaultY
+        cardHandlerAreaHeight = cardContainableView.handleHeight
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func addTo<T: CardContainable & UIViewController>(_ cardViewController: T) {
+        let cardY: CGFloat = cardViewController.view.bounds.height - (cardViewController.view.safeAreaInsets.bottom + cardHandlerAreaHeight + defaultOriginY)
+        let cardDefaultRect: CGRect = .init(x: 0,
+                                                y: cardY,
+                                                width: cardViewController.view.bounds.width,
+                                                height: cardViewController.view.bounds.height)
+        addChildController(self, to: cardViewController, frame: cardDefaultRect)
     }
     
     override func didMove(toParent parent: UIViewController?) {
@@ -77,6 +91,10 @@ class FloatingCardViewController: UIViewController {
         configureBlur()
         configureContentView()
         configureGestures()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureView(to: .moving)
     }
     
