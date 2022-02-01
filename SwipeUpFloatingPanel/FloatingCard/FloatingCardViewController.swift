@@ -12,7 +12,7 @@ enum FloatingCardState {
 }
 
 enum AnchorType {
-    case bottomBound(superView: UIView, cardHandleHeight: CGFloat), upperBound(superView: UIView)
+    case appearing(withHeight: CGFloat), bottomBound(superView: UIView, cardHandleHeight: CGFloat), upperBound(superView: UIView)
     
     var yPosition: CGFloat {
         switch self {
@@ -20,6 +20,8 @@ enum AnchorType {
             return superView.frame.height - (superView.safeAreaInsets.bottom + cardHandleHeight)
         case let .upperBound(superView):
             return superView.safeAreaInsets.top
+        case let .appearing(withHeight):
+            return withHeight
         }
     }
     
@@ -34,6 +36,7 @@ enum AnchorType {
         switch self {
         case .bottomBound(_, _): return 0.2
         case .upperBound(_): return 0.6
+        default: return 0
         }
     }
 }
@@ -78,9 +81,8 @@ class FloatingCardViewController: UIViewController {
     }
     
     func addTo<T: CardContainable & UIViewController>(_ cardViewController: T) {
-        let cardY: CGFloat = cardViewController.view.bounds.height - (cardViewController.view.safeAreaInsets.bottom + cardHandlerAreaHeight + defaultOriginY)
         let cardDefaultRect: CGRect = .init(x: 0,
-                                                y: cardY,
+                                                y: cardViewController.view.bounds.height,
                                                 width: cardViewController.view.bounds.width,
                                                 height: cardViewController.view.bounds.height)
         addChildController(self, to: cardViewController, frame: cardDefaultRect)
@@ -91,6 +93,15 @@ class FloatingCardViewController: UIViewController {
         configureBlur()
         configureContentView()
         configureGestures()
+        configureInitialPosition(for: parent)
+    }
+    
+    func configureInitialPosition(for parent: UIViewController?)
+    {
+        guard let parent = parent else { return }
+        configureView(to: .moving)
+        defaultOriginY = parent.view.frame.height - defaultOriginY
+        moveTo(anchor: .appearing(withHeight: defaultOriginY))
     }
     
     override func viewWillAppear(_ animated: Bool) {
